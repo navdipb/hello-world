@@ -4,17 +4,26 @@ import java.util.*;
 
 public class sample1 {
 
-	
+	private static HashMap<Integer, Long> memoized = new HashMap<Integer, Long>();
+    static {
+        memoized.put(1, 1L);
+        memoized.put(2, 1L);
+    }
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 
-		for (int i = 1; i < 1000; i++)
-			primefactors(i);
-		//for (int i = -1; i < 47; i++)
-			//System.out.println(i + ":" + fibiter(i) + ":" + fibrec(i));
-	//hanoimove(5, 1, 3);
+		System.out.println("Start...");
+		//for (int i = 1; i < 1000; i++)
+		//	primefactors(i);
+		for (int i = -1; i < 47; i++) {
+			System.out.print(i + ":" + fibiter(i) + ":");
+			System.out.print(fibmemoized(i) + ":");
+			System.out.println(fibrec(i));
+		}
+		//hanoimove(5, 1, 3);
 		//charhanoi(7, 'a', 'b', 'x');
 		System.out.println("Done!");
     }
@@ -64,6 +73,18 @@ public class sample1 {
 		}
 			
 		return fib2;	
+	}
+	
+	private static long fibmemoized(int n)
+	{
+		if (n < 1) return -1;
+		if (memoized.containsKey(n)) {
+			return memoized.get(n);
+	    } else {
+	        long answer = fibmemoized(n - 1) + fibmemoized(n - 2);
+	        memoized.put(n, answer);
+	        return answer;
+	    }
 	}
 	
 	private static String strRev(String s)
