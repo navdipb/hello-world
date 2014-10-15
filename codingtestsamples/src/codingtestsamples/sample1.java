@@ -3,18 +3,17 @@ import java.util.*;
 
 
 public class sample1 {
-
-	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 
+		System.out.println("beginning of main()");
 		for (int i = 1; i < 1000; i++)
 			primefactors(i);
 		//for (int i = -1; i < 47; i++)
 			//System.out.println(i + ":" + fibiter(i) + ":" + fibrec(i));
-	//hanoimove(5, 1, 3);
+		//hanoimove(5, 1, 3);
 		//charhanoi(7, 'a', 'b', 'x');
 		System.out.println("Done!");
     }
